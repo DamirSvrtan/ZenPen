@@ -15,31 +15,17 @@ var editor = (function() {
 		// Set cursor position
 		var range = document.createRange();
 		var selection = window.getSelection();
-		range.setStart(headerField, 1);
+		// range.setStart(headerField, 1);
 		selection.removeAllRanges();
 		selection.addRange(range);
 
 		createEventBindings();
-
-		// Load state if storage is supported
-		if ( supportsHtmlStorage() ) {
-			loadState();
-		}
 	}
 
 	function createEventBindings( on ) {
 
 		// Key up bindings
-		if ( supportsHtmlStorage() ) {
-
-			document.onkeyup = function( event ) {
-				checkTextHighlighting( event );
-				saveState();
-			}
-
-		} else {
-			document.onkeyup = checkTextHighlighting;
-		}
+		document.onkeyup = checkTextHighlighting;
 
 		// Mouse bindings
 		document.onmousedown = checkTextHighlighting;
@@ -77,10 +63,10 @@ var editor = (function() {
 
 	function bindElements() {
 
-		headerField = document.querySelector( '.header' );
-		headerField.onblur = function(){
-			console.log("izasao iz fielda")
-		}
+		// headerField = document.querySelector( '.header' );
+		// headerField.onblur = function(){
+		// 	console.log("izasao iz fielda")
+		// }
 		contentField = document.querySelector( '.content' );
 		textOptions = document.querySelector( '.text-options' );
 
@@ -216,23 +202,6 @@ var editor = (function() {
 		return !!nodeList[ name ];
 	}
 
-	function saveState( event ) {
-		
-		localStorage[ 'header' ] = headerField.innerHTML;
-		localStorage[ 'content' ] = contentField.innerHTML;
-	}
-
-	function loadState() {
-
-		if ( localStorage[ 'header' ] ) {
-			headerField.innerHTML = localStorage[ 'header' ];
-		}
-
-		if ( localStorage[ 'content' ] ) {
-			contentField.innerHTML = localStorage[ 'content' ];
-		}
-	}
-
 	function onBoldClick() {
 		document.execCommand( 'bold', false );
 	}
@@ -342,7 +311,6 @@ var editor = (function() {
 
 	return {
 		init: init,
-		saveState: saveState,
 		getWordCount: getWordCount
 	}
 
