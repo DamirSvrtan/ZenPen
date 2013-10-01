@@ -27,28 +27,6 @@ html {
 }
 
 
-html, body {
-	font-family: 'Lora', serif;
-	padding: 0px;
-	margin: 0px;
-	height: 100%;
-}
-
-body {
-	padding-bottom: 40px;
-	padding-right: 10px;
-	overflow-y: scroll;
-	padding-left: 10px;
-	padding-top: 20px;
-	min-width: 800px;
-	width: 100%;
-
-	-webkit-transition: all 600ms;
-	-moz-transition: all 600ms;
-	-ms-transition: all 600ms;
-	-o-transition: all 600ms;
-	transition: all 600ms;
-}
 
 section {
 	max-width: 600px;
