@@ -112,9 +112,10 @@ var editor = (function() {
 		if ( selection.isCollapsed === false ) {
 
 			currentNodeList = findNodes( selection.focusNode );
-
+			// console.log(currentNodeList)
+			// console.log(selection.focusNode.nodeName)
 			// Find if highlighting is in the editable area
-			if ( hasNode( currentNodeList, "ARTICLE") ) {
+			if (isContentEditable(selection.focusNode) == true) {
 				updateBubbleStates();
 				updateBubblePosition();
 
@@ -197,10 +198,23 @@ var editor = (function() {
 		return nodeNames;
 	}
 
-	function hasNode( nodeList, name ) {
+	function isContentEditable(element){
+		//if any of its parents has the class of 'content-editable' go hooray
+		while ( element.parentNode ) {
+			if (element.className !== undefined){
+				if (element.className.indexOf("content-editable")>=0){
+					return true;
+				}
+			}
+			element = element.parentNode;
+		}
+		return false;
+	}
 
+	function hasNode( nodeList, name ) {
 		return !!nodeList[ name ];
 	}
+
 
 	function onBoldClick() {
 		document.execCommand( 'bold', false );

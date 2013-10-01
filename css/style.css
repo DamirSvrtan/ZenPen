@@ -56,18 +56,6 @@ section {
 	margin: auto;
 }
 
-header {
-	font-weight: bold;
-	font-size: 38px;
-}
-
-article {
-	line-height: 30px;
-	margin-top: 22px;
-	font-size: 22px;
-	display: block;
-}
-
 blockquote {
 	border-left: 4px solid deepskyblue;
 	margin-left: -19px;
